@@ -108,7 +108,6 @@ uint8_t DHT22_Start (void)
   }
   return Response;
 }
-
 uint8_t DHT22_Read (void)
 {
   uint8_t a,b;
