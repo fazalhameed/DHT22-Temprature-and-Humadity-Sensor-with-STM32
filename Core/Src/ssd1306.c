@@ -44,7 +44,6 @@ typedef struct {
 /* Private variable */
 static SSD1306_t SSD1306;
 
-
 #define SSD1306_RIGHT_HORIZONTAL_SCROLL              0x26
 #define SSD1306_LEFT_HORIZONTAL_SCROLL               0x27
 #define SSD1306_VERTICAL_AND_RIGHT_HORIZONTAL_SCROLL 0x29
@@ -69,7 +68,6 @@ void SSD1306_ScrollRight(uint8_t start_row, uint8_t end_row)
   SSD1306_WRITECOMMAND (SSD1306_ACTIVATE_SCROLL); // start scroll
 }
 
-
 void SSD1306_ScrollLeft(uint8_t start_row, uint8_t end_row)
 {
   SSD1306_WRITECOMMAND (SSD1306_LEFT_HORIZONTAL_SCROLL);  // send 0x26
@@ -81,7 +79,6 @@ void SSD1306_ScrollLeft(uint8_t start_row, uint8_t end_row)
   SSD1306_WRITECOMMAND(0XFF);
   SSD1306_WRITECOMMAND (SSD1306_ACTIVATE_SCROLL); // start scroll
 }
-
 
 void SSD1306_Scrolldiagright(uint8_t start_row, uint8_t end_row)
 {
@@ -98,7 +95,6 @@ void SSD1306_Scrolldiagright(uint8_t start_row, uint8_t end_row)
   SSD1306_WRITECOMMAND (SSD1306_ACTIVATE_SCROLL);
 }
 
-
 void SSD1306_Scrolldiagleft(uint8_t start_row, uint8_t end_row)
 {
   SSD1306_WRITECOMMAND(SSD1306_SET_VERTICAL_SCROLL_AREA);  // sect the area
@@ -114,13 +110,10 @@ void SSD1306_Scrolldiagleft(uint8_t start_row, uint8_t end_row)
   SSD1306_WRITECOMMAND (SSD1306_ACTIVATE_SCROLL);
 }
 
-
 void SSD1306_Stopscroll(void)
 {
 	SSD1306_WRITECOMMAND(SSD1306_DEACTIVATE_SCROLL);
 }
-
-
 
 void SSD1306_InvertDisplay (int i)
 {
@@ -129,7 +122,6 @@ void SSD1306_InvertDisplay (int i)
   else SSD1306_WRITECOMMAND (SSD1306_NORMALDISPLAY);
 
 }
-
 
 void SSD1306_DrawBitmap(int16_t x, int16_t y, const unsigned char* bitmap, int16_t w, int16_t h, uint16_t color)
 {
@@ -153,13 +145,6 @@ void SSD1306_DrawBitmap(int16_t x, int16_t y, const unsigned char* bitmap, int16
         }
     }
 }
-
-
-
-
-
-
-
 
 uint8_t SSD1306_Init(void) {
 
@@ -207,9 +192,7 @@ uint8_t SSD1306_Init(void) {
 	SSD1306_WRITECOMMAND(0x14); //
 	SSD1306_WRITECOMMAND(0xAF); //--turn on SSD1306 panel
 
-
 	SSD1306_WRITECOMMAND(SSD1306_DEACTIVATE_SCROLL);
-
 	/* Clear screen */
 	SSD1306_Fill(SSD1306_COLOR_BLACK);
 
@@ -332,7 +315,6 @@ char SSD1306_Puts(char* str, FontDef_t* Font, SSD1306_COLOR_t color) {
 	/* Everything OK, zero should be returned */
 	return *str;
 }
-
 
 void SSD1306_DrawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, SSD1306_COLOR_t c) {
 	int16_t dx, dy, sx, sy, err, e2, i, tmp;
@@ -477,7 +459,6 @@ void SSD1306_DrawTriangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, ui
 	SSD1306_DrawLine(x3, y3, x1, y1, color);
 }
 
-
 void SSD1306_DrawFilledTriangle(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t x3, uint16_t y3, SSD1306_COLOR_t color) {
 	int16_t deltax = 0, deltay = 0, x = 0, y = 0, xinc1 = 0, xinc2 = 0,
 	yinc1 = 0, yinc2 = 0, den = 0, num = 0, numadd = 0, numpixels = 0,
@@ -599,8 +580,6 @@ void SSD1306_DrawFilledCircle(int16_t x0, int16_t y0, int16_t r, SSD1306_COLOR_t
     }
 }
 
-
-
 void SSD1306_Clear (void)
 {
 	SSD1306_Fill (0);
@@ -647,7 +626,6 @@ for(i = 0; i < count; i++)
 dt[i+1] = data[i];
 HAL_I2C_Master_Transmit(&hi2c1, address, dt, count+1, 10);
 }
-
 
 void ssd1306_I2C_Write(uint8_t address, uint8_t reg, uint8_t data) {
 	uint8_t dt[2];
